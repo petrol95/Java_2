@@ -14,4 +14,9 @@ public class Water extends Obstacle {
     public void doIt(Competitor competitor) {
         competitor.swim(distance);
     }
+
+    @Override
+    public String toString() {
+        return "Река: " + distance;
+    }
 }

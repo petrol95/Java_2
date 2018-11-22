@@ -39,6 +39,10 @@ public class Human implements Competitor{
     }
 
     public void swim(int distance) {
+        if (distance == 0) {
+            System.out.println(name + ": плавать не нужно! ^^");
+            return;
+        }
         if (distance <= maxSwimDistance) {
             System.out.println(name + " успешно проплыл дистанцию");
         } else {
@@ -48,7 +52,16 @@ public class Human implements Competitor{
     }
 
     public void showResult() {
-        System.out.println(name + ": " + onDistance);
+        System.out.println(name + ": " + (onDistance ? "прошёл" : "сошёл с дистанции"));
     }
 
+    @Override
+    public String toString() {
+        return "Человек {" +
+                "Имя = '" + name + '\'' +
+                ", бег = " + maxRunDistance +
+                ", прыжок = " + maxJumpHeight +
+                ", плавание = " + maxSwimDistance +
+                '}';
+    }
 }

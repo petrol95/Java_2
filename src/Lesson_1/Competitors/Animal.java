@@ -41,7 +41,11 @@ public abstract class Animal implements Competitor {
     }
 
     public void swim(int distance) {
-        if (maxSwimDistance == 0) {
+        if (distance == 0) {
+            System.out.println(type + " " + name + ": плавать не нужно! ^^");
+            return;
+        }
+        if (maxSwimDistance == 0 && distance != 0) {
             System.out.println(type + " " + name + " не умеет плавать");
             onDistance = false;
             return;
@@ -55,7 +59,17 @@ public abstract class Animal implements Competitor {
     }
 
     public void showResult() {
-        System.out.println(type + " " + name + ": " + onDistance);
+        System.out.println(type + " " + name + ": " + (onDistance ? "прошёл" : "сошёл с дистанции"));
     }
 
+    @Override
+    public String toString() {
+        return "Животное {" +
+                "вид = '" + type + '\'' +
+                ", имя = '" + name + '\'' +
+                ", бег = " + maxRunDistance +
+                ", прыжок = " + maxJumpHeight +
+                ", плавание = " + maxSwimDistance +
+                '}';
+    }
 }
