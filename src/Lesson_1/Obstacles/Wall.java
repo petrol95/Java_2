@@ -14,4 +14,9 @@ public class Wall extends Obstacle {
     public void doIt(Competitor competitor) {
         competitor.jump(height);
     }
+
+    @Override
+    public String toString() {
+        return "Стена: " + height;
+    }
 }

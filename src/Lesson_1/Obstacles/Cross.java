@@ -14,4 +14,9 @@ public class Cross extends Obstacle {
     public void doIt(Competitor competitor) {
         competitor.run(distance);
     }
+
+    @Override
+    public String toString() {
+        return "Кросс: " + distance;
+    }
 }
