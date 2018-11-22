@@ -1,4 +1,4 @@
-package Lesson_1;
+package Lesson_1.Examples;
 
 public enum AppState {
     INIT(5), PREPARE(2), WORK(4), SAVE(10), TERMINATE(1);

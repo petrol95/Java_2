@@ -1,4 +1,4 @@
-package Lesson_1;
+package Lesson_1.Examples;
 
 public interface Flyable {
     void fly();

@@ -1,4 +1,4 @@
-package Lesson_1;
+package Lesson_1.Examples;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
