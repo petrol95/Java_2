@@ -24,5 +24,6 @@ public class MainClass {
         c2.doIt(team2); // Просим команду пройти полосу
         team2.showResults(); // Показываем результаты
 
+
     }
 }
