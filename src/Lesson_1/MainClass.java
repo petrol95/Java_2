@@ -1,8 +1,9 @@
 package Lesson_1;
 
-import Lesson_1.Competitors.*;
+import Lesson_1.Competitors.Cat;
+import Lesson_1.Competitors.Dog;
+import Lesson_1.Competitors.Human;
 import Lesson_1.Obstacles.Cross;
-import Lesson_1.Obstacles.Obstacle;
 import Lesson_1.Obstacles.Wall;
 import Lesson_1.Obstacles.Water;
 
