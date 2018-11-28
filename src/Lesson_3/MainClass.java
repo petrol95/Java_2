@@ -44,6 +44,42 @@ public class MainClass {
         ali.add(1, 10);
         System.out.println(ali); // shift: [3, 10, 2, 1]
 
+        ArrayList<String> als2 = new ArrayList<>();
+        als2.add("A");
+        als2.add("C");
+        als2.add("A");
+        als2.add("A");
+        als2.add("B");
+        als2.add("B");
+        als2.remove("A");
+        System.out.println(als2); // [C, A, A, B, B]
+        while(als2.remove("A"));
+        System.out.println(als2); // [C, B, B]
+        als2.clear();
+        System.out.println(als2); // []
+
+        ArrayList<String> als3 = new ArrayList<>();
+        als3.add("A");
+        als3.add("C");
+        als3.add("A");
+        als3.add("A");
+        als3.add("B");
+        als3.add("B");
+        System.out.println(als3); // [A, C, A, A, B, B]
+        ArrayList<String> als4 = new ArrayList<>();
+        als4.add("W");
+        als4.add("W");
+        als4.add("W");
+        als4.add("A");
+        als4.add("B");
+        als4.add("B");
+        als3.add(2, "D");
+        als3.addAll(1, als4);
+        System.out.println(als3); // [A, W, W, W, A, B, B, C, D, A, A, B, B]
+
+        ArrayList<String> als5 = new ArrayList<>(100_000);
+
+
 
     }
 
