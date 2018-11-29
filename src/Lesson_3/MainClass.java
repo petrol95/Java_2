@@ -1,9 +1,6 @@
 package Lesson_3;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class MainClass {
 
@@ -89,27 +86,78 @@ public class MainClass {
 //        System.out.println(hm.get("England"));
 
         // Comparing ArrayList & HashMap
-        ArrayList<String> al = new ArrayList<>();
-        for (int i = 0; i < 1_000_000; i++) {
-            al.add("Entry # " + i);
-        }
+//        ArrayList<String> al = new ArrayList<>();
+//        for (int i = 0; i < 1_000_000; i++) {
+//            al.add("Entry # " + i);
+//        }
+//        HashMap<String, Integer> hm = new HashMap<>();
+//        for (int i = 0; i < 1_000_000; i++) {
+//            hm.put("Entry # " + i, i);
+//        }
+//        long time = System.currentTimeMillis();
+//        for (int i = 0; i < 400; i++) {
+//            al.contains("Entry #654882");
+//        }
+//        System.out.println(System.currentTimeMillis() - time);
+//        time = System.currentTimeMillis();
+//        for (int i = 0; i < 100_000_000; i++) {
+//            hm.get("Entry #654882");
+//        }
+//        System.out.println(System.currentTimeMillis() - time);
+
+        // Имитация коллизий в HashMap
+//        String[] str = new String[10];
+//        str[(str.length - 1) & "Java".hashCode()] = "Java";
+//        str[(str.length - 1) & "Home".hashCode()] = "Home";
+//        str[(str.length - 1) & "Core".hashCode()] = "Core";
+//        System.out.println(Arrays.toString(str)); // [Java, null, null, null, null, null, null, null, null, Core]
+
+        // HashSet
+//        HashSet<String> hs = new HashSet<>();
+//        hs.add("Q");
+//        hs.add("B");
+//        hs.add("B");
+//        hs.add("B");
+//        hs.add("A");
+//        hs.add("A");
+//        hs.add("C");
+//        System.out.println(hs); // [Q, A, B, C]
+//
+//        // LinkedHashSet
+//        LinkedHashSet<String> lhs = new LinkedHashSet<>();
+//        lhs.add("Q");
+//        lhs.add("B");
+//        lhs.add("B");
+//        lhs.add("B");
+//        lhs.add("A");
+//        lhs.add("A");
+//        lhs.add("C");
+//        System.out.println(lhs); // [Q, B, A, C]
+
+        // TreeSet
+//        TreeSet<String> ts = new TreeSet<>(Arrays.asList("A", "W", "Q", "C", "C", "D"));
+//        System.out.println(ts); // [A, C, D, Q, W]
+
+//        HashMap<String, Integer> hmi = new HashMap<>();
+//        hmi.put("A", 1);
+//        System.out.println(hmi.getOrDefault("A", 9)); // 1
+
+        // Iterator
+//        ArrayList<Integer> ali = new ArrayList<>(Arrays.asList(2, 2, 2, 1, 2, 2, 1, 1));
+//        Iterator<Integer> iter = ali.iterator();
+//        while(iter.hasNext()) {
+//            Integer temp = iter.next();
+//            if (temp == 2)
+//                iter.remove();
+//        }
+//        System.out.println(ali); // [1, 1, 1]
+
         HashMap<String, Integer> hm = new HashMap<>();
-        for (int i = 0; i < 1_000_000; i++) {
-            hm.put("Entry # " + i, i);
+        hm.put("A", 1);
+        Iterator <Map.Entry<String, Integer>> iter = hm.entrySet().iterator();
+        while(iter.hasNext()) {
+            Map.Entry<String, Integer> e = iter.next();
+            System.out.println(e.getKey() + " " + e.getValue()); // A 1
         }
-        long time = System.currentTimeMillis();
-        for (int i = 0; i < 400; i++) {
-            al.contains("Entry #654882");
-        }
-        System.out.println(System.currentTimeMillis() - time);
-        time = System.currentTimeMillis();
-        for (int i = 0; i < 100_000_000; i++) {
-            hm.get("Entry #654882");
-        }
-        System.out.println(System.currentTimeMillis() - time);
     }
-
-
-
-
 }
