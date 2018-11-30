@@ -9,7 +9,7 @@ import java.util.Iterator;
  * Java. Level 2. Lesson 3. Homework 3
  *
  * @author Olga Petrova
- * @version dated Nov 29, 2018
+ * @version dated Nov 30, 2018
  */
 
 public class HomeWork3 {
@@ -39,23 +39,22 @@ public class HomeWork3 {
         System.out.println("Unique words: " + hs);
         System.out.println("Number of times each word occurs: " + ind);
 
-
         // Task # 2
         System.out.println("\nTask #2");
         PhoneBook pb = new PhoneBook();
-        addRecord(pb, "Smith", "123456");
-        addRecord(pb, "Smith", "345678");
-        addRecord(pb, "Johnson", "567838");
-        addRecord(pb, "Johnson", "165738");
-        addRecord(pb, "Richter", "835627");
+        addRecord(pb,"Smith", new HashSet<>(Arrays.asList("123456", "456789")));
+        addRecord(pb,"Smith", new HashSet<>(Arrays.asList("345678")));
+        addRecord(pb,"Johnson", new HashSet<>(Arrays.asList("567838")));
+        addRecord(pb,"Johnson", new HashSet<>(Arrays.asList("165738")));
+        addRecord(pb,"Richter", new HashSet<>(Arrays.asList("835627")));
+
         pb.get("Smith");
         pb.get("Johnson");
         pb.get("Richter");
         pb.display();
     }
 
-    private static void addRecord(PhoneBook pb, String name, String telNumber) {
-        Record rec = new Record(name, telNumber);
-        pb.add(rec);
+    private static void addRecord(PhoneBook pb, String name, HashSet telNumber) {
+        pb.add(new Record(name, telNumber));
     }
 }

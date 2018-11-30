@@ -8,7 +8,7 @@ import java.util.Map;
  * Java. Level 2. Lesson 3. Homework 3
  *
  * @author Olga Petrova
- * @version dated Nov 29, 2018
+ * @version dated Nov 30, 2018
  */
 
 public class PhoneBook {
@@ -32,9 +32,9 @@ public class PhoneBook {
             Record rec = new Record();
             rec = e.getValue();
             if (name.equals(rec.getName()))
-                System.out.println(rec.getTelNumber());
+                rec.displayTelNumber();
         }
-        System.out.println("============================");
+        System.out.println("\n============================");
     }
 
     public void display() {
@@ -42,7 +42,9 @@ public class PhoneBook {
         Iterator<Map.Entry<Integer, Record>> iter = phoneBook.entrySet().iterator();
         while (iter.hasNext()) {
             Map.Entry<Integer, Record> e = iter.next();
-            System.out.println((e.getKey() + 1) + ". " + e.getValue());
+            System.out.print((e.getKey() + 1) + ". ");
+            e.getValue().display();
+            System.out.println();
         }
     }
 }
