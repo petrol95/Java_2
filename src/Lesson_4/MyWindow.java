@@ -12,6 +12,21 @@ public class MyWindow extends JFrame {
     private JTextField jtf;
     private JTextArea jta;
 
+    class MyHintTextField extends JTextField {
+        String hint;
+
+        public MyHintTextField(String hint) {
+            this.hint = hint;
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (getText().isEmpty())
+                g.drawString(hint, 4, 16);
+        }
+    }
+
     public MyWindow() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("My Application");
@@ -33,7 +48,8 @@ public class MyWindow extends JFrame {
             }
         });
 
-        jtf = new JTextField(20);
+//        jtf = new JTextField(20);
+        jtf = new MyHintTextField("Введите слово");
         jta = new JTextArea(10, 20);
         jta.setLineWrap(true);
         JScrollPane jsp = new JScrollPane(jta);
@@ -67,7 +83,7 @@ public class MyWindow extends JFrame {
 //                JOptionPane.showInputDialog(null, "Here is your value", "10");
                 JOptionPane.showOptionDialog(null, "msg", "title",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
-                        new Object[] {"A", "C", "D"}, "A");
+                        new Object[] {"A", "B", "C", "D"}, "A");
             }
         });
         jbWarning.addMouseMotionListener(new MouseMotionListener() {
@@ -86,6 +102,15 @@ public class MyWindow extends JFrame {
         Font font = new Font("Arial", Font.PLAIN, 24);
         jta.setFont(font);
 
+        JList<String> jls = new JList<>(new DefaultListModel<>());
+        add(jls, BorderLayout.EAST);
+        jls.setPreferredSize(new Dimension(100, 1));
+        ((DefaultListModel<String>)jls.getModel()).addElement("A");
+        ((DefaultListModel<String>)jls.getModel()).addElement("B");
+        ((DefaultListModel<String>)jls.getModel()).addElement("C");
+
+        JLabel jll = new JLabel("Hello Java");
+        add(jll, BorderLayout.WEST);
 
 //        for (int i = 0; i < 50; i++) {
 //            JButton jb = new JButton("#" + i);
