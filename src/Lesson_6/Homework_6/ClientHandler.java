@@ -19,11 +19,11 @@ public class ClientHandler {
                 @Override
                 public void run() {
                     try{
-                        while(true){
+                        while(true) {
+                            System.out.println("Enter your message: ");
                             String msg = in.readUTF();
-                            System.out.println("client: " + msg);
-                            sendMsg("echo: " + msg);
                             if (msg.equals("/end")) break;
+                            sendMsg("echo: " + msg);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -41,7 +41,7 @@ public class ClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    };
 
     public void sendMsg(String msg){
         try {
@@ -50,5 +50,5 @@ public class ClientHandler {
             e.printStackTrace();
         }
     }
-
 }
+
