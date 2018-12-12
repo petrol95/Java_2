@@ -1,6 +1,5 @@
-package Lesson_6.Jchat.client;
+package Lesson_7.JChat.client;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -70,4 +69,3 @@ public class Controller implements Initializable{
 
 
 }
-
