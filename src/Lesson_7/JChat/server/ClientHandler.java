@@ -50,7 +50,12 @@ public class ClientHandler {
                         String msg = in.readUTF();
                         System.out.println(nick + ": " + msg);
                         if (msg.startsWith("/")) {
-                            if (msg.equals("/end")) break;
+                            if (msg.equals("/end"))
+                                break;
+                            if (msg.startsWith("/w")) {
+                                String[] data = msg.split("\\s", 3);
+                                server.unicastMsg(getNick(), data[1], data[2]);
+                            }
                         } else {
                             server.broadcastMsg(nick + ": " + msg);
                         }
@@ -79,16 +84,6 @@ public class ClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void showAlert(String msg){
-        Platform.runLater(() -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Возникли проблемы");
-            alert.setHeaderText(null);
-            alert.setContentText(msg);
-            alert.showAndWait();
-        });
     }
 
 }

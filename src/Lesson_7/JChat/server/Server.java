@@ -53,10 +53,24 @@ public class Server {
         return false;
     }
 
-
     public void broadcastMsg(String msg) {
         for (ClientHandler o: clients) {
             o.sendMsg(msg);
         }
+    }
+
+    public void unicastMsg(String nickFrom, String nickTo, String msg) {
+        for (ClientHandler o: clients) {
+            if (o.getNick().equals(nickTo)) {
+                if (nickFrom.equals(nickTo)) {
+                    o.sendMsg(nickFrom + " (self): " + msg);
+                    return;
+                } else {
+                    o.sendMsg(nickFrom + " (private): " + msg);
+                    return;
+                }
+            }
+        }
+        System.out.println("Нет клиента с таким ником");
     }
 }
