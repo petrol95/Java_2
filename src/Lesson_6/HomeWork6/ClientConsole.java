@@ -23,11 +23,11 @@ public class ClientConsole extends Thread {
         }
 
         BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter your message:");
 
         new Thread(() -> {
             try {
                 while(true) {
+                    System.out.println("Enter your message:");
                     String msg = keyboard.readLine();
                     if (msg.equals("/end"))
                         break;

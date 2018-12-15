@@ -16,20 +16,20 @@ public class ServerMain {
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
-            BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+//            BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Enter message:");
 
             while(true) {
 
-                    String msg = keyboard.readLine();
-                    if (msg.equals("/end"))
-                        break;
-                    else {
-                        out.writeUTF("echo: " + msg);
-                        out.flush();
-                        msg = in.readUTF();
-                        System.out.println(msg);
-                    }
+//                String msg = keyboard.readLine();
+                String msg = in.readUTF();
+//                if (msg.equals("/end"))
+//                    break;
+//                else {
+                    out.writeUTF("echo: " + msg);
+                    out.flush();
+                    System.out.println(msg);
+//                }
 
             }
         } catch (IOException e) {
