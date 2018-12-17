@@ -22,12 +22,14 @@ public class ClientConsole extends Thread {
             e.printStackTrace();
         }
 
-        BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader keyboard;
+        keyboard = new BufferedReader(new InputStreamReader(System.in));
 
+        // Ввод сообщения в консоли клиента
         new Thread(() -> {
             try {
                 while(true) {
-                    System.out.println("Enter your message:");
+                    System.out.println("Enter message from client:");
                     String msg = keyboard.readLine();
                     if (msg.equals("/end"))
                         break;
@@ -42,5 +44,19 @@ public class ClientConsole extends Thread {
                 e.printStackTrace();
             }
         }).start();
+
+//        // Обработка сообщения от сервера
+//        new Thread(() -> {
+//            try {
+//                while(true) {
+//                    String mes = in.readUTF();
+//                    out.writeUTF("echo: " + mes);
+//                    out.flush();
+//                    System.out.println(mes);
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }).start();
     }
 }

@@ -16,25 +16,53 @@ public class ServerMain {
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
-//            BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Enter message:");
+            execute(in, out);
 
-            while(true) {
-
-//                String msg = keyboard.readLine();
-                String msg = in.readUTF();
-//                if (msg.equals("/end"))
-//                    break;
-//                else {
-                    out.writeUTF("echo: " + msg);
-                    out.flush();
-                    System.out.println(msg);
-//                }
-
-            }
         } catch (IOException e) {
             System.out.println("Server initialization error");
             e.printStackTrace();
         }
+    }
+
+    private static void execute(DataInputStream in, DataOutputStream out) throws IOException {
+
+        BufferedReader keyboard;
+        keyboard = new BufferedReader(new InputStreamReader(System.in));
+
+        new Thread(() -> {
+            try {
+                while(true) {
+
+                    // Обработка сообщения от клиента
+                    String mes = in.readUTF();
+                    out.writeUTF("echo: " + mes);
+                    out.flush();
+                    System.out.println(mes);
+
+//                    // Ввод сообщения в консоли сервера
+//                    System.out.println("Enter message from server:");
+//                    String msg = keyboard.readLine();
+//                    if (msg.equals("/end"))
+//                        break;
+//                    else {
+//                        out.writeUTF("server: " + msg);
+//                        out.flush();
+//                        msg = in.readUTF();
+//                        System.out.println(msg);
+//                    }
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+
+
+
+
+
+
+
     }
 }
