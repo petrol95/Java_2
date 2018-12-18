@@ -26,43 +26,35 @@ public class ServerMain {
 
     private static void execute(DataInputStream in, DataOutputStream out) throws IOException {
 
-        BufferedReader keyboard;
-        keyboard = new BufferedReader(new InputStreamReader(System.in));
-
         new Thread(() -> {
-            try {
-                while(true) {
-
-                    // Обработка сообщения от клиента
-                    String mes = in.readUTF();
-                    out.writeUTF("echo: " + mes);
+            while (true) {
+                try {
+                    BufferedReader keyboard;
+                    keyboard = new BufferedReader(new InputStreamReader(System.in));
+                    System.out.println("Enter message from server:");
+                    String msg = keyboard.readLine();
+                    if (msg.equals("/end"))
+                        break;
+                    out.writeUTF(msg);
                     out.flush();
-                    System.out.println(mes);
 
-//                    // Ввод сообщения в консоли сервера
-//                    System.out.println("Enter message from server:");
-//                    String msg = keyboard.readLine();
-//                    if (msg.equals("/end"))
-//                        break;
-//                    else {
-//                        out.writeUTF("server: " + msg);
-//                        out.flush();
-//                        msg = in.readUTF();
-//                        System.out.println(msg);
-//                    }
-
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }).start();
 
-
-
-
-
-
-
-
+        new Thread(() -> {
+            while (true) {
+                try {
+                    String msg = in.readUTF();
+                    out.writeUTF("echo: " + msg);
+                    out.flush();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
+
 }

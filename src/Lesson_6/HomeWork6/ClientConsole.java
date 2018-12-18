@@ -22,41 +22,35 @@ public class ClientConsole extends Thread {
             e.printStackTrace();
         }
 
-        BufferedReader keyboard;
-        keyboard = new BufferedReader(new InputStreamReader(System.in));
-
-        // Ввод сообщения в консоли клиента
         new Thread(() -> {
-            try {
-                while(true) {
+            while (true) {
+                try {
+                    BufferedReader keyboard;
+                    keyboard = new BufferedReader(new InputStreamReader(System.in));
                     System.out.println("Enter message from client:");
                     String msg = keyboard.readLine();
                     if (msg.equals("/end"))
                         break;
-                    else {
-                        out.writeUTF("client: " + msg);
-                        out.flush();
-                        msg = in.readUTF();
-                        System.out.println(msg);
-                    }
+                    out.writeUTF(msg);
+                    out.flush();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }).start();
 
-//        // Обработка сообщения от сервера
-//        new Thread(() -> {
-//            try {
-//                while(true) {
-//                    String mes = in.readUTF();
-//                    out.writeUTF("echo: " + mes);
-//                    out.flush();
-//                    System.out.println(mes);
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }).start();
+        new Thread(() -> {
+            while (true) {
+                try {
+                    String msg = in.readUTF();
+                    out.writeUTF(msg);
+                    out.flush();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
     }
 }
