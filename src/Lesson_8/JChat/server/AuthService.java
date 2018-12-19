@@ -1,4 +1,4 @@
-package Lesson_8.server;
+package Lesson_8.JChat.server;
 
 import java.sql.*;
 
