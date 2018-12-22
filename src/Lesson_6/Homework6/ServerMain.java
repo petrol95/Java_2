@@ -47,7 +47,7 @@ public class ServerMain {
                     String msg = in.readUTF();
                     if (msg.equals("/end"))
                         break;
-                    out.writeUTF("echo: " + msg);
+                    out.writeUTF(msg);
                     out.flush();
                     System.out.println("client: " + msg);
                 } catch (Exception e) {
