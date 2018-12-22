@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox alignment="center" stylesheets="@mystyle.css" xmlns:fx="http://javafx.com/fxml/1"
-      xmlns="http://javafx.com/javafx/8.0.112" fx:controller="Lesson_8.client.Controller">
+<HBox fx:id="main" alignment="center" stylesheets="@mystyle.css" xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/8.0.112" fx:controller="Lesson_8.JChat.client.Controller">
     <VBox HBox.hgrow="ALWAYS">
         <HBox fx:id="authPanel">
             <TextField fx:id="loginField" promptText="Логин" HBox.hgrow="ALWAYS" />

@@ -1,4 +1,4 @@
-package Lesson_8.client;
+package Lesson_8.JChat.client;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -16,8 +16,11 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class Controller implements Initializable{
+    @FXML
+    HBox main;
     @FXML
     TextArea textArea;
     @FXML
@@ -39,6 +42,7 @@ public class Controller implements Initializable{
 
     final String SERVER_IP = "localhost";
     final int SERVER_PORT = 8189;
+    final long TIME_OUT = 120_000;
 
     private boolean authorized;
     private String myNick;
@@ -63,6 +67,23 @@ public class Controller implements Initializable{
             clientsListView.setManaged(false);
             myNick = "";
         }
+        checkTimeout();
+ }
+
+    private void checkTimeout(){
+        long start = System.nanoTime();
+        Thread tout = new Thread(() -> {
+            while ((TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start)) < TIME_OUT) {
+                if (this.authorized)
+                    break;
+            }
+            if (!this.authorized) {
+                showAlert("Истекло время авторизации");
+                main.setVisible(false);
+                main.setManaged(false);
+            }
+        });
+        tout.start();
     }
 
     @Override

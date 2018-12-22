@@ -1,7 +1,4 @@
-package Lesson_8.server;
-
-import javafx.application.Platform;
-import javafx.scene.control.Alert;
+package Lesson_8.JChat.server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -25,6 +22,7 @@ public class ClientHandler {
             this.socket = socket;
             this.in = new DataInputStream(socket.getInputStream());
             this.out = new DataOutputStream(socket.getOutputStream());
+
             new Thread(() -> {
                 try{
                     while(true){
@@ -72,7 +70,6 @@ public class ClientHandler {
                         e.printStackTrace();
                     }
                 }
-
             }).start();
 
         } catch (IOException e) {

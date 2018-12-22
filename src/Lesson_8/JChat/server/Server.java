@@ -1,4 +1,4 @@
-package Lesson_8.server;
+package Lesson_8.JChat.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -19,12 +19,14 @@ public class Server {
             clients = new Vector<>();
             authService = new AuthService();
             authService.connect();
+
             System.out.println("Server started... Waiting clients");
+
             while (true){
                 Socket socket = serverSocket.accept();
-                System.out.println("Client connected " + socket.getInetAddress() + " " + socket.getPort() + " " + socket.getLocalPort());
-                new ClientHandler(this, socket);
-            }
+                System.out.println("Client connected " + socket.getInetAddress() + " " + socket.getPort() + " "
+                        + socket.getLocalPort());
+                new ClientHandler(this, socket);            }
         } catch (IOException e){
             e.printStackTrace();
         } catch (SQLException | ClassNotFoundException e){
@@ -82,4 +84,5 @@ public class Server {
             o.sendMsg(out);
         }
     }
+
 }
