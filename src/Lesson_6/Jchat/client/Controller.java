@@ -1,6 +1,5 @@
 package Lesson_6.Jchat.client;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
